@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: aquamarine;
+}
+.input-field {
+  width: 450px;
+  padding: 10px;
+  text-align: left;
+  position: relative;
+  outline: none;
+  border: none;
+}
+.icon {
+  padding: 10px;
+  background-color: grey;
+}
+.input-icons button i {
+  position: absolute;
+}
+.webappDiv {
+  text-align: center;
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .input-field {
+    max-width: 250px;
+    padding: 15px;
+    text-align: left;
+    position: relative;
+    outline: none;
+    border: none;
+  }
+  .icon {
+    padding: 15px;
+    background-color: grey;
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <title>Edit Table</title>
+  </head>
+  <body>
+    <div id="output"></div>
+
+    <!-- <script></script> -->
+    <!-- Load Babel -->
+    <!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      const Frontend = () => {
+        const initialData = [
+          "MONTH 1",
+          "Onboarding Call",
+          "Google Search Console Access",
+          "Google Analytics Access",
+          "Website Access",
+          "Technical Audit",
+          "Anchor Text and Semantic Analysis",
+          "Competitor Analysis",
+          "Anchor Text / URL Mapping",
+          "Google Data Studio Report + Local Reporting Suite",
+          "Site Level Optimization",
+          "On Page Optimization",
+          "Content Creation",
+          "Content Publishing",
+          "Premium Press Release",
+          "Authority Niche Placements",
+          "Review Management",
+          "Index Links",
+          "Video Recap",
+        ];
+        const [data, setdata] = useState(
+          initialData.map((value) => ({
+            value,
+            columns: ["", "","", ""],
+          }))
+        );
+
+        const handleChange = (rowIndex, colIndex, value) => {
+          const EnterNewdata = [...data];
+          EnterNewdata[rowIndex].columns[colIndex] = value;
+          //   console.log(EnterNewdata);
+          //   EnterNewdata[rowIndex]
+          setdata(EnterNewdata);
+        };
+        console.log(data);
+
+        const handleSave = () => {
+            console.log("here now data can be posted to api", data)
+        }
+        return (
+          <div>
+            <table border="1" cellPadding="12">
+              <tbody>
+                {data.map((item, r_index) => (
+                  //   console.log(item)
+                  <tr key={r_index}>
+                    <td>{item.value}</td>
+                    {item.columns.map((columnValues, colindex) => (
+                      <td key={colindex}>
+                        <input
+                          type="text"
+                          value={columnValues}
+                          onChange={(e) =>
+                            handleChange(r_index, colindex, e.target.value)
+                          }
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <button onClick={handleSave}>save</button>
+          </div>
+        );
+      };
+
+      // export default Frontend;
+      const rootElement = document.getElementById("output");
+      if (rootElement) {
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<Frontend />);
+      }
+    </script>
+  </body>
+</html>
